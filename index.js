@@ -7,16 +7,19 @@ const login = document.getElementById('login');
 const newBook = document.getElementById('new-book');
 const form = document.getElementById('form-container');
 const bookShelf = document.getElementById('book-container');
+const dimmer = document.getElementById('dimmer');
 
 //add book button opens form
 newBook.addEventListener('click', () => {
     form.classList.toggle('open');
+    dimmer.classList.toggle('hidden');
 });
 
 //add book button adds book
 submit.addEventListener('click', (e) => {
     e.preventDefault();
     form.classList.toggle('open');
+    dimmer.classList.toggle('hidden');
     addBook();
 })
 
@@ -42,30 +45,49 @@ function addBook() {
 
     console.log(myLibrary);
 
-    for (let i = 0; i<myLibrary.length; i++) {
-        //create child div
-        const book = document.createElement('div');
-        const bookTitle = document.createElement('span');
-        const bookAuthor = document.createElement('span');
-        const bookPages = document.createElement('span');
-        bookTitle.textContent = myLibrary[i].title;
-        bookAuthor.textContent = myLibrary[i].author;
-        bookPages.textContent = myLibrary[i].pagecount;
+    //create child div
+    const book = document.createElement('div');
+    const bookTitle = document.createElement('span');
+    const bookAuthor = document.createElement('span');
+    const bookPages = document.createElement('span');
+    const remove = document.createElement('button');
+    const readIt = document.createElement('button');
+    bookTitle.textContent = myLibrary[myLibrary.length -1].title;
+    bookAuthor.textContent = myLibrary[myLibrary.length -1].author;
+    bookPages.textContent = myLibrary[myLibrary.length -1].pagecount;
+    remove.textContent = 'remove book';
+    readIt.textContent = "mark as read"
 
-        console.log(book);
+    console.log(book);
 
-        //apply styling
-        book.classList.toggle('book');
+    //apply styling
+    book.classList.toggle('book');
+    remove.classList.toggle('book-buttons');
+    readIt.classList.toggle('book-buttons');
+    //append children
+    book.appendChild(bookTitle);
+    book.appendChild(bookAuthor);
+    book.appendChild(bookPages);
+    book.appendChild(remove);
+    book.appendChild(readIt);
 
-        //append children
-        book.appendChild(bookTitle);
-        book.appendChild(bookAuthor);
-        book.appendChild(bookPages);
+    bookShelf.appendChild(book);
 
-        bookShelf.appendChild(book);
-    }
+    remove.addEventListener('click', () => {
+        book.remove();
+    })
 
+    readIt.addEventListener('click', () => {
+        book.classList.toggle('read-book');
+        if (readIt.textContent === "mark as read") {
+            readIt.textContent = "mark as unread"
+        } else {
+            readIt.textContent = "mark as read"
+        }
+
+    })
     //current errors:
-    //making the same div twice every run (need to only add newest div, or last item in myLibrary)
-    //styling is al screwy
+    //styling is al screwy - grid isn't working
+    //no styling applied to checkbox and need to capture that value and mark accordingly once book is created - see instructions
+
 }

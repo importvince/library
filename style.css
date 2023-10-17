@@ -67,6 +67,7 @@ select {
     background-color: #FFF2D8;
     width: 100vw;
     height: 100vh;
+    z-index: 0;
 }
 
 .header {
@@ -106,14 +107,24 @@ select {
     transform: scale(1.05);
 }
 
-.form.open {
-    opacity: 1;
-    visibility: visible;
+.dimmer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.hidden {
+    display: none;
 }
 
 .form {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -123,6 +134,12 @@ select {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.form.open {
+    opacity: 1;
+    visibility: visible;
+    background-color: #FFF2D8;
 }
 
 #add-book {
@@ -192,21 +209,55 @@ select {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
 }
 
-.book-container {
+#book-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 33%));
-    gap: 50px;
-    width: 100vw;
+    grid-template-columns: repeat(4, minmax(200px, 25%));
+    grid-template-rows: repeat(auto-fit, mincontent);
+    gap: 40px;
+    width: 100%;
+    height: 100vh;
+    margin-top: 30px;
+    z-index: 0;
 }
 
 .book {
     display: flex;
     padding: 20px;
     flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
     gap: 20px;
     background-color: #EAD7BB;
     border-radius: 10px;
-    border: 2px solid #113946;
+    width: 200px;
+    box-shadow: 5px 5px 10px 1px gray;;
+}
+
+.book-buttons {
+    width: 80%;
+    border-radius: 10px;
+    padding: 5px;
+    border: none;
+    box-shadow: 5px 5px 10px 1px gray;
+    background-color: #113946;
+    color: #FFF2D8;
+    font-size: 0.8rem;
+}
+
+.book-buttons:hover {
+    background-color: #FFF2D8;
+    color: #113946;
+    cursor: pointer;
+}
+
+.book-buttons:active {
+    transform: scale(1.05);
+}
+
+.read-book {
+    background-color: #113946;
+    color: #FFF2D8;
 }
