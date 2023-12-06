@@ -14,6 +14,7 @@ const checkbox = document.getElementById('read');
 newBook.addEventListener('click', () => {
     form.classList.toggle('open');
     dimmer.classList.toggle('hidden');
+    isChecked = 0;
 });
 
 //add book button adds book
