@@ -57,7 +57,7 @@ const myLibrary =[
 ]
 
 //constructor for book objects
-function Book(title, author, pagecount) {
+function Book(title, author, pagecount, readStatus) {
     this.title = title;
     this.author = author;
     this.pagecount = pagecount;
@@ -68,6 +68,7 @@ function addBook() {
     let newTitle = title.value;
     let newAuthor = author.value;
     let newPageCount = pages.value;
+
     console.log(`title = ${newTitle} author = ${newAuthor} pagecount = ${newPageCount}`);
 
     let addedBook = new Book(newTitle, newAuthor, newPageCount);
