@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="style.css">
-    <title>Library</title>
+    <title>iLibrary</title>
 </head>
 <body>
     <div class="all-container">
         <div id="dimmer" class="dimmer hidden"></div>
         <div class="header">
-            <h1>Library</h1>
+            <h1>iLibrary</h1>
             <button id="login" class="button">Login</button>
         </div>
         <div class="library">
             <div id="form-container" class="form">
                 <form id="add-book">
-                    <h2>Add new book</h2>
+                    <h2>Adding a book to the library...</h2>
                     <label for="title">
                         <input type="text" id="title" name="title" placeholder="Title">
                     </label>
@@ -31,10 +31,10 @@
                         Have you read it?
                         <input type="checkbox" id="read" name="read">
                     </label>
-                    <button type="submit" id="submit">add book</button>
+                    <button type="submit" id="submit">add this book</button>
                 </form>
             </div>
-            <button id="new-book">+ book</button>
+            <button id="new-book" class="button">+ book</button>
             <div id="book-container">
             </div>
         </div>
